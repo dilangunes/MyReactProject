@@ -6,16 +6,16 @@ import {
   Platform,
 } from 'react-native';
 import Card from './src/components/Card';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 type Props ={};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Card></Card>
-        <Card></Card>
-        <Card />
+        <Card myText= 'Dilan' backgroundColor='blue'></Card>
+        <Card myText='Selam'backgroundColor='green'></Card>
+        <Card myText= ':)'/>
       </View>  
      
     );
