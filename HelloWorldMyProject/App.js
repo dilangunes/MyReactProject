@@ -8,26 +8,30 @@ import {
 import Card from './src/components/Card';
 
 export default class App extends Component {
+  
   state = {
-    name:'Barış'
+    number: 0
   };
-  onPressChangeName = () => {
-    //alert('Merhaba');
+  OnPressArtir = () => {
+    
     this.setState({
-      name: 'Dilan',
+     number : this.state.number + 1,
+    });
+  };
+  OnPressAzalt = () => {
+    
+    this.setState({
+     number : this.state.number - 1,
     });
   };
   render() {
     return (
       <View style={styles.container}>
-        <Card myText='Selam'backgroundColor='green'></Card>
-        <Card myText= ':)'/> 
-        <Text>{this.state.name}</Text>
-        <Button 
-          title='İsmi Değiştir'
-          color='pink'
-          onPress={this.onPressChangeName}></Button>
-
+        <Text style= {styles.numbers}>{this.state.number}</Text>
+        <View style={styles.buttons}>        
+          <Button title='Artır ++' color='pink' onPress={this.OnPressArtir}></Button>
+          <Button title='Azalt --' color='pink' onPress={this.OnPressAzalt}></Button>
+        </View>
       </View>  
      
     );
@@ -38,11 +42,19 @@ const styles = StyleSheet.create({
   container:{
     backgroundColor:'yellow',
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
 
   },
- 
+  buttons:{
+    flexDirection: 'row',
+    borderColor: 'purple',
+    borderWidth: 4,
+    padding:5
+  },
+  numbers:{
+    fontSize: 35,
+  }
 });
 
