@@ -3,19 +3,21 @@ import {
    StyleSheet,
    View,
    Text,
-  Platform,
+   Button
 } from 'react-native';
 import Card from './src/components/Card';
 
-
-type Props ={};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  onPressDetail = () => {
+    alert('Merhaba');
+  };
   render() {
     return (
       <View style={styles.container}>
         <Card myText= 'Dilan' backgroundColor='blue'></Card>
         <Card myText='Selam'backgroundColor='green'></Card>
-        <Card myText= ':)'/>
+        <Card myText= ':)'/> 
+        <Button title='Detail' color='pink' onPress={this.onPressDetail}></Button>
       </View>  
      
     );
