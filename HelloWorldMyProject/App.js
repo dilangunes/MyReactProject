@@ -3,37 +3,23 @@ import {
    StyleSheet,
    View,
    Text,
-   Button
+   Image
 } from 'react-native';
-import Card from './src/components/Card';
 
 export default class App extends Component {
-  
-  state = {
-    number: 0
-  };
-  OnPressArtir = () => {
-    
-    this.setState({
-     number : this.state.number + 1,
-    });
-  };
-  OnPressAzalt = () => {
-    
-    this.setState({
-     number : this.state.number - 1,
-    });
-  };
-  render() {
+    render() {
     return (
       <View style={styles.container}>
-        <Text style= {styles.numbers}>{this.state.number}</Text>
-        <View style={styles.buttons}>        
-          <Button title='Artır ++' color='pink' onPress={this.OnPressArtir}></Button>
-          <Button title='Azalt --' color='pink' onPress={this.OnPressAzalt}></Button>
-        </View>
-      </View>  
-     
+        <Image style = {{width: '50%', height: 180}} 
+        source= {require('./src/assets/platform.png')}></Image>
+
+        <Image
+         styles= {{width: '%100', height: 220}}
+         source= {{uri: 'https://cdn1.ntv.com.tr/gorsel/yasam/yeni-fenomen-insan-gibi-uyuyan-kedi-chata/,EvAHMRaNnUyOkUb_gT4xjA.jpg?w=960&mode=max&v=20190718111545025'}}>
+
+         </Image>
+ 
+      </View>       
     );
   }
 }
@@ -47,14 +33,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
 
   },
-  buttons:{
-    flexDirection: 'row',
-    borderColor: 'purple',
-    borderWidth: 4,
-    padding:5
-  },
-  numbers:{
-    fontSize: 35,
-  }
 });
 
