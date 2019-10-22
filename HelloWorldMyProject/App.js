@@ -2,23 +2,21 @@ import React,{Component} from 'react';
 import {
    StyleSheet,
    View,
+   Button,
    Text,
-   Image
+   TouchableOpacity
 } from 'react-native';
 
 export default class App extends Component {
     render() {
     return (
       <View style={styles.container}>
-        <Image style = {{width: '50%', height: 180}} 
-        source= {require('./src/assets/platform.png')}></Image>
-
-        <Image
-         styles= {{width: '%100', height: 220}}
-         source= {{uri: 'https://cdn1.ntv.com.tr/gorsel/yasam/yeni-fenomen-insan-gibi-uyuyan-kedi-chata/,EvAHMRaNnUyOkUb_gT4xjA.jpg?w=960&mode=max&v=20190718111545025'}}>
-
-         </Image>
- 
+        <TouchableOpacity>
+          <View>
+            <Text style={styles.buttonTitle}>My Button 2</Text>
+          </View>
+        </TouchableOpacity>
+        <Button title='My Button'></Button>
       </View>       
     );
   }
@@ -32,6 +30,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
 
+  },
+  buttonTitle:{
+    fontSize: 55,
+    backgroundColor: 'orange',
+    borderRadius:15,
+    padding: 15,
   },
 });
 
