@@ -4,17 +4,26 @@ import {
    View,
    Text,
    SafeAreaView,
-   FlatList
+   FlatList,
+   Image,
+   TouchableOpacity
 } from 'react-native';
 
 import data from './src/data/data';
 export default class App extends Component {
   renderContactsItem = ({item, index}) => {
     return(
-      <View>
-        <Text> {item.color} </Text>
-        <Text> {item.value} </Text>
-      </View>
+      <TouchableOpacity style={styles.itemContainer}>
+        <Image
+        style={styles.avatar}
+        source ={{uri: item.picture}}
+        >
+        </Image>
+        <View style= {styles.textContainer}>
+          <Text style= {styles.name}>{item.name}</Text>
+          <Text> {item.company} </Text>
+        </View>
+      </TouchableOpacity>
     )
   };
     render() {
@@ -22,7 +31,7 @@ export default class App extends Component {
       <SafeAreaView style={styles.container}>
         <FlatList
         renderItem={this.renderContactsItem}
-        keyExtractor={(item) => item.value}
+        keyExtractor={(item) => item._id}
        //keyExtractor={(item ,index) => index.toString()}
         data = {data}
         >
@@ -34,16 +43,28 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'pink',
+    backgroundColor:'white',
     flex: 1
     },
- title:{
-   borderRadius:15,
-   backgroundColor: 'orange',   
-   marginVertical: 30,
-   textAlign: 'center',
-   paddingVertical: 60,  
-   fontSize : 40
- }
+  itemContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: 'grey'
+    },
+    avatar:{
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      marginHorizontal: 10,
+
+    },
+    textContainer:{      
+      justifyContent: 'space-around'
+    },
+    name:{
+      fontSize: 20,
+    },
 });
 
