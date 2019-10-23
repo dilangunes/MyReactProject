@@ -2,54 +2,47 @@ import React,{Component} from 'react';
 import {
    StyleSheet,
    View,
-   Button,
    Text,
-   ScrollView,
-   Dimensions
+   SafeAreaView,
+   FlatList
 } from 'react-native';
-const { width } = Dimensions.get('window') //ekranın genişliğini tutar
+
+import data from './src/data/data';
 export default class App extends Component {
+  renderContactsItem = ({item, index}) => {
+    return(
+      <View>
+        <Text> {item.color} </Text>
+        <Text> {item.value} </Text>
+      </View>
+    )
+  };
     render() {
     return (
-      <View style={styles.container}>
-        <ScrollView
-         horizontal= {true} //yatay kaydırma yapar
-         pagingEnabled = {true} //kaydırma gecişlerini sayfalama gibi yapar
-         >
-          <Text style= {styles.title}> 1 </Text>
-          <Text style= {styles.title}> 2 </Text>
-          <Text style= {styles.title}> 3 </Text>
-          <Text style= {styles.title}> 4 </Text>
-          <Text style= {styles.title}> 5 </Text>
-          <Text style= {styles.title}> 6 </Text>
-          <Text style= {styles.title}> 7 </Text>
-          <Text style= {styles.title}> 8 </Text>
-          <Text style= {styles.title}> 9 </Text>
-          <Text style= {styles.title}> 10 </Text>
-          <Text style= {styles.title}> 11 </Text>
-        </ScrollView>     
-      </View>       
+      <SafeAreaView style={styles.container}>
+        <FlatList
+        renderItem={this.renderContactsItem}
+        keyExtractor={(item) => item.value}
+       //keyExtractor={(item ,index) => index.toString()}
+        data = {data}
+        >
+        </FlatList>      
+      </SafeAreaView>       
     );
   }
 }
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'yellow',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    //alignItems: 'center',
-    //paddingHorizontal: 10,
-
-  },
+    backgroundColor:'pink',
+    flex: 1
+    },
  title:{
    borderRadius:15,
    backgroundColor: 'orange',   
    marginVertical: 30,
    textAlign: 'center',
-   paddingVertical: 60,
-   width: width,
+   paddingVertical: 60,  
    fontSize : 40
  }
 });
