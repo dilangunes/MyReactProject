@@ -6,14 +6,14 @@ import {
    SafeAreaView,
    FlatList,
    Image,
-   TouchableOpacity
+   TouchableOpacity,TextInput
 } from 'react-native';
 
 import data from './src/data/data';
 export default class App extends Component {
   renderContactsItem = ({item, index}) => {
     return(
-      <TouchableOpacity style={styles.itemContainer}>
+      <TouchableOpacity style={[styles.itemContainer, {backgroundColor: index % 2 === 1 ? '#f3f2ff' : ''}]}>
         <Image
         style={styles.avatar}
         source ={{uri: item.picture}}
@@ -26,10 +26,20 @@ export default class App extends Component {
       </TouchableOpacity>
     )
   };
+
+  renderHeader = () => {
+    return(
+      <View style= {styles.searchContainer}>
+        <TextInput placeholder= "Search..." style= {styles.searchInput}/>
+
+      </View>
+      )
+  };
     render() {
     return (
       <SafeAreaView style={styles.container}>
         <FlatList
+        ListHeaderComponent = {this.renderHeader}
         renderItem={this.renderContactsItem}
         keyExtractor={(item) => item._id}
        //keyExtractor={(item ,index) => index.toString()}
@@ -66,5 +76,13 @@ const styles = StyleSheet.create({
     name:{
       fontSize: 20,
     },
+    searchContainer: {
+      padding: 10
+    },
+    searchInput:{
+      fontSize: 20,
+      backgroundColor: '#f9d9f9',
+      padding: 10
+    }
 });
 
